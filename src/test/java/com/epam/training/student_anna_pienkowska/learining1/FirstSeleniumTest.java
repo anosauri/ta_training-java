@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -42,6 +43,19 @@ public class FirstSeleniumTest {
 
         // click the login button, here don't do object reference
         driver.findElement(By.tagName("button")).click();
+
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        String actualResult = driver.findElement(By.tagName("h6")).getText();
+        // .getText() WebElement object to String
+        String expectedResult = "Dashboard";
+
+        Assert.assertEquals(actualResult, expectedResult);
+        // returns if actual result is as expected result
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+
 
 
     }
