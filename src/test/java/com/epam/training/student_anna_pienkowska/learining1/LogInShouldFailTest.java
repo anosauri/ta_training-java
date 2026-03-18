@@ -51,7 +51,6 @@ public class LogInShouldFailTest {
         String expectedResult = "Dashboard";
 
         Assert.assertNotEquals(actualResult, expectedResult);
-        // returns if actual result is as expected result
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         
