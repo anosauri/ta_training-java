@@ -33,8 +33,19 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    public void clickLoginButton() {
+    public ProductsPage clickLoginButton() {
         click(loginButton);
+        return new ProductsPage(driver);
+    }
+
+    public ProductsPage logInto(String username, String password) {
+        set(usernameField, username);
+        set(passwordField, password);
+        return clickLoginButton();
+    }
+
+    public String getErrorMessage() {
+        return errorMessage.getText();
     }
 
 }
