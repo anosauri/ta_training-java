@@ -1,6 +1,5 @@
 package com.epam.training.student_anna_pienkowska.final_task.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

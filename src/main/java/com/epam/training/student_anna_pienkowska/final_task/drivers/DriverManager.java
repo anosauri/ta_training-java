@@ -3,7 +3,7 @@ package com.epam.training.student_anna_pienkowska.final_task.drivers;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 public class DriverManager {
 
@@ -13,22 +13,24 @@ public class DriverManager {
 
     public static WebDriver getDriver(){
         if(driver.get() == null){
-            switch (System.getProperty("browser")){
+            String browser = System.getProperty("browser");
+            if (browser == null) {
+                browser = "chrome";
+            }
+            switch (browser){
                 case "chrome": {
                     WebDriverManager.chromedriver().setup();
                     driver.set(new ChromeDriver());
                     break;
                 }
-                case "firefox": {
-                    WebDriverManager.firefoxdriver().setup();
-                    driver.set(new FirefoxDriver());
+                case "edge": {
+                    WebDriverManager.edgedriver().setup();
+                    driver.set(new EdgeDriver());
                     break;
                 }
                 default: {
-                    // todo: maybe add exception
-                    WebDriverManager.chromedriver().setup();
-                    driver.set(new ChromeDriver());
-                    break;
+                    throw new IllegalArgumentException(
+                            "This browser is not supported. Please use chrome or edge.");
                 }
             }
             driver.get().manage().window().maximize();
