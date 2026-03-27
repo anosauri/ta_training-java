@@ -38,8 +38,8 @@ public class LoginPage extends BasePage{
     }
 
     public ProductsPage logInto(String username, String password) {
-        set(usernameField, username);
-        set(passwordField, password);
+        setUsername(username);
+        setPassword(password);
         return clickLoginButton();
     }
 

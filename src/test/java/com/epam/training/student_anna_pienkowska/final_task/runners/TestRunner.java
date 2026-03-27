@@ -4,7 +4,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = "src/test/resources/final_task/features",
-        glue = "",
+        glue = "com.epam.training.student_anna_pienkowska.final_task.steps",
         monochrome = true
 )
 
