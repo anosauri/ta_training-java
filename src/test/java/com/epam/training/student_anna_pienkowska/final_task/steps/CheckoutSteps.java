@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 public class CheckoutSteps {
 
@@ -19,18 +20,17 @@ public class CheckoutSteps {
     @Given("User is on the Saucedemo login page")
     public void userIsOnTheSaucedemoLoginPage() {
         loginPage = new LoginPage(DriverManager.getDriver());
-        productsPage = new ProductsPage(DriverManager.getDriver());
         DriverManager.getDriver().get("https://www.saucedemo.com/");
     }
 
     @When("User logs in with username {string} and password {string}")
     public void userLogsInWithUsernameAndPassword(String username, String password) {
-        loginPage.logInto(username, password);
+        productsPage = loginPage.logInto(username, password);
     }
 
     @Then("User is on the Saucedemo Products page")
     public void userIsOnTheSaucedemoProductsPage() {
-        productsPage.productsPageIsDisplayed();
+        Assert.assertTrue(productsPage.productsPageIsDisplayed(), "Saucedemo products page did not display");
     }
 
     @When("User adds {string} to the cart")
@@ -40,21 +40,19 @@ public class CheckoutSteps {
 
     @And("User goes to the cart")
     public void userGoesToTheCart() {
-        cartPage = new CartPage(DriverManager.getDriver());
-        productsPage.goToCart();
+        cartPage = productsPage.goToCart();
     }
 
     @Then("User sees {string} in the cart")
     public void userSeesInTheCart(String productName) {
-        cartPage.cartPageIsDisplayed();
-        cartPage.productIsDisplayed(productName);
+        Assert.assertTrue(cartPage.cartPageIsDisplayed(), "Saucedemo cart page did not load.");
+        Assert.assertTrue(cartPage.productIsDisplayed(productName),productName + " is not in the cart.");
     }
 
     @When("User proceeds to checkout")
     public void userProceedsToCheckout() {
-        checkoutInfoPage = new CheckoutInfoPage(DriverManager.getDriver());
-        cartPage.checkout();
-        checkoutInfoPage.checkoutInfoPageIsDisplayed();
+        checkoutInfoPage = cartPage.checkout();
+        Assert.assertTrue(checkoutInfoPage.checkoutInfoPageIsDisplayed(), "Saucedemo checkout info page did not load.");
     }
 
     @And("User provides First Name {string}, Last Name {string} and Postal Code {string}")
@@ -64,29 +62,27 @@ public class CheckoutSteps {
 
     @And("User clicks continue")
     public void userClicksContinue() {
-        checkoutOverviewPage = new CheckoutOverviewPage(DriverManager.getDriver());
-        checkoutInfoPage.clickContinueButton();
+        checkoutOverviewPage = checkoutInfoPage.clickContinueButton();
     }
 
     @Then("User is on Checkout: Overview page")
     public void userIsOnCheckoutOverviewPage() {
-        checkoutOverviewPage.checkoutOverviewPageIsDisplayed();
+        Assert.assertTrue(checkoutOverviewPage.checkoutOverviewPageIsDisplayed(), "Saucedemo checkout overview page did not load.");
     }
 
     @When("User clicks finish")
     public void userClicksFinish() {
-        checkoutCompletePage = new CheckoutCompletePage(DriverManager.getDriver());
-        checkoutOverviewPage.clickFinishButton();
+        checkoutCompletePage = checkoutOverviewPage.clickFinishButton();
     }
 
     @Then("User sees the successful order message {string}")
     public void userSeesTheSuccessfulOrderMessage(String message) {
-        checkoutCompletePage.isCheckoutCompletePageDisplayed();
-        checkoutCompletePage.isCheckoutCompleted(message);
+        Assert.assertTrue(checkoutCompletePage.isCheckoutCompletePageDisplayed(), "Saucedemo checkout complete page did not load.");
+        Assert.assertTrue(checkoutCompletePage.isCheckoutCompleted(message), "Saucedemo completed order message did not display.");
     }
 
     @And("User validates that total price equals the sum of both products")
     public void userValidatesThatTotalPriceEqualsTheSumOfBothProducts() {
-        checkoutOverviewPage.checkSum();
+        Assert.assertTrue(checkoutOverviewPage.checkSum(), "Total price is not equal to the sum of both products");
     }
 }
