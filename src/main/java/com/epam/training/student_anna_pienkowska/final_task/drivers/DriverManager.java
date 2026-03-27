@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
+import java.time.Duration;
+
 public class DriverManager {
 
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
@@ -34,6 +36,7 @@ public class DriverManager {
                 }
             }
             driver.get().manage().window().maximize();
+            driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         }
         return driver.get();
     }

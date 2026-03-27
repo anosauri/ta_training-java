@@ -6,9 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class CheckoutInfoPage extends BasePage {
 
-    @FindBy(css = "span[data-test='title']")
-    private WebElement checkoutInfoTitle;
-
     @FindBy(css = "#first-name")
     private WebElement firstNameField;
 
@@ -18,7 +15,7 @@ public class CheckoutInfoPage extends BasePage {
     @FindBy(css = "#postal-code")
     private WebElement postalCodeField;
 
-    @FindBy(css = "#continue")
+    @FindBy(xpath = "//input[@id='continue']")
     private WebElement continueButton;
 
     public CheckoutInfoPage(WebDriver driver) {
@@ -26,7 +23,7 @@ public class CheckoutInfoPage extends BasePage {
     }
 
     public boolean checkoutInfoPageIsDisplayed() {
-        return checkoutInfoTitle.isDisplayed();
+        return firstNameField.isDisplayed();
     }
 
     public CheckoutInfoPage setFirstName(String firstName) {
@@ -49,10 +46,9 @@ public class CheckoutInfoPage extends BasePage {
         return new CheckoutOverviewPage(driver);
     }
 
-    public CheckoutOverviewPage fillInformation(String firstName, String lastName, String postalCode) {
+    public void fillInformation(String firstName, String lastName, String postalCode) {
         setFirstName(firstName);
         setLastName(lastName);
         setPostalCode(postalCode);
-        return clickContinueButton();
     }
 }

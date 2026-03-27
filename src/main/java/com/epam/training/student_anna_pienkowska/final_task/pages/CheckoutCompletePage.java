@@ -6,15 +6,20 @@ import org.openqa.selenium.support.FindBy;
 
 public class CheckoutCompletePage extends BasePage {
 
-    @FindBy(xpath = "//h2[@data-test='complete-header']")
+    @FindBy(css = ".complete-header")
     private WebElement completeMessage;
 
     public CheckoutCompletePage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isCheckoutCompleted() {
+    public boolean isCheckoutCompletePageDisplayed() {
         return completeMessage.isDisplayed();
+    }
+
+    public boolean isCheckoutCompleted(String message) {
+        String text = completeMessage.getText();
+        return text.equals(message);
     }
 
 }
