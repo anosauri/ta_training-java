@@ -1,11 +1,9 @@
 package com.epam.training.student_anna_pienkowska.final_task.drivers;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-
-import java.time.Duration;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverManager {
 
@@ -21,12 +19,14 @@ public class DriverManager {
             }
             switch (browser){
                 case "chrome": {
-                    WebDriverManager.chromedriver().setup();
-                    driver.set(new ChromeDriver());
+
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--incognito");
+
+                    driver.set(new ChromeDriver(options));
                     break;
                 }
                 case "edge": {
-                    WebDriverManager.edgedriver().setup();
                     driver.set(new EdgeDriver());
                     break;
                 }
@@ -36,7 +36,6 @@ public class DriverManager {
                 }
             }
             driver.get().manage().window().maximize();
-            driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         }
         return driver.get();
     }
