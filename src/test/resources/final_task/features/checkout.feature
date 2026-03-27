@@ -12,7 +12,7 @@ Feature: Checkout Process
     Then User sees "Sauce Labs Backpack" in the cart
 
     When User proceeds to checkout
-    And User provides First Name "Tony", Last Name "Stark" and Zip/Postal Code "00-000"
+    And User provides First Name "Tony", Last Name "Stark" and Postal Code "00-000"
     And User clicks continue
     Then User is on Checkout: Overview page
 
@@ -28,7 +28,7 @@ Feature: Checkout Process
     And User sees "Sauce Labs Onesie" in the cart
 
     When User proceeds to checkout
-    And User provides First Name "Tony", Last Name "Stark" and Zip/Postal Code "00-000"
+    And User provides First Name "Tony", Last Name "Stark" and Postal Code "00-000"
     And User clicks continue
     Then User is on Checkout: Overview page
     And User validates that total price equals the sum of both products
