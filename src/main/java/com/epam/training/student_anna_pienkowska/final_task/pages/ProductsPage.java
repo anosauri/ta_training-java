@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductsPage extends BasePage {
 
@@ -18,6 +19,7 @@ public class ProductsPage extends BasePage {
     }
 
     public boolean productsPageIsDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(productsHeader));
         return productsHeader.isDisplayed();
     }
 

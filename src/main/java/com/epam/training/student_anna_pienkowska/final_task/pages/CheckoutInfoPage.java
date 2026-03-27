@@ -3,6 +3,7 @@ package com.epam.training.student_anna_pienkowska.final_task.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CheckoutInfoPage extends BasePage {
 
@@ -23,6 +24,7 @@ public class CheckoutInfoPage extends BasePage {
     }
 
     public boolean checkoutInfoPageIsDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(firstNameField));
         return firstNameField.isDisplayed();
     }
 
@@ -47,8 +49,6 @@ public class CheckoutInfoPage extends BasePage {
     }
 
     public void fillInformation(String firstName, String lastName, String postalCode) {
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPostalCode(postalCode);
+        setFirstName(firstName).setLastName(lastName).setPostalCode(postalCode);
     }
 }

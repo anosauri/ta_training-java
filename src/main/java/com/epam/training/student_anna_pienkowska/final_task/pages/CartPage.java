@@ -3,13 +3,14 @@ package com.epam.training.student_anna_pienkowska.final_task.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
 public class CartPage extends BasePage {
 
     @FindBy(css = "[data-test='cart-quantity-label']")
-    private WebElement cartTitle;
+    private WebElement cartElement;
 
     @FindBy(css = "[data-test='inventory-item-name']")
     private List<WebElement> cartItemNames;
@@ -22,7 +23,8 @@ public class CartPage extends BasePage {
     }
 
     public boolean cartPageIsDisplayed() {
-        return cartTitle.isDisplayed();
+        wait.until(ExpectedConditions.visibilityOf(cartElement));
+        return cartElement.isDisplayed();
     }
 
     public boolean productIsDisplayed(String productName) {
