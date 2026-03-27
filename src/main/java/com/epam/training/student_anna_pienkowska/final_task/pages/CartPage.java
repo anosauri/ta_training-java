@@ -4,10 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class CartPage extends BasePage {
 
-    @FindBy(css = "span[data-test='title']")
+    @FindBy(css = "[data-test='cart-quantity-label']")
     private WebElement cartTitle;
+
+    @FindBy(css = "[data-test='inventory-item-name']")
+    private List<WebElement> cartItemNames;
 
     @FindBy(css = "#checkout")
     private WebElement checkoutButton;
@@ -18,6 +23,15 @@ public class CartPage extends BasePage {
 
     public boolean cartPageIsDisplayed() {
         return cartTitle.isDisplayed();
+    }
+
+    public boolean productIsDisplayed(String productName) {
+        for (WebElement item : cartItemNames) {
+            if (item.getText().equals(productName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public CheckoutInfoPage checkout() {
