@@ -6,13 +6,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class CheckoutOverviewPage extends BasePage {
 
-    @FindBy(className = "cart_list")
+    @FindBy(css = ".cart_list")
     private WebElement cartList;
 
-    @FindBy(className = "summary_subtotal_label")
+    @FindBy(css = ".summary_subtotal_label")
     private WebElement itemTotal;
 
-    @FindBy(id = "finish")
+    @FindBy(css = "#finish")
     private WebElement finishButton;
 
     public CheckoutOverviewPage(WebDriver driver) {

@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class CartPage extends BasePage {
 
-    @FindBy(className = "cart_list")
-    private WebElement cartList;
+    @FindBy(css = "span[data-test='title']")
+    private WebElement cartTitle;
 
-    @FindBy(id = "checkout")
+    @FindBy(css = "#checkout")
     private WebElement checkoutButton;
 
     public CartPage(WebDriver driver) {
@@ -17,7 +17,7 @@ public class CartPage extends BasePage {
     }
 
     public boolean cartPageIsDisplayed() {
-        return cartList.isDisplayed();
+        return cartTitle.isDisplayed();
     }
 
     public CheckoutInfoPage checkout() {

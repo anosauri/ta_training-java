@@ -6,13 +6,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage{
 
-    @FindBy(id = "user-name")
+    @FindBy(css = "#user-name")
     private WebElement usernameField;
 
-    @FindBy(id = "password")
+    @FindBy(css = "#password")
     private WebElement passwordField;
 
-    @FindBy(id = "login-button")
+    @FindBy(css = "#login-button")
     private WebElement loginButton;
 
     @FindBy(xpath = "//h3[@data-test='error']")

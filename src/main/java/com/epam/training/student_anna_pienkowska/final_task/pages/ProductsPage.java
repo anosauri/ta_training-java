@@ -7,10 +7,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProductsPage extends BasePage {
 
-    @FindBy(xpath = "//span[text()='Products']")
+    @FindBy(css = "span[data-test='title']")
     private WebElement productsHeader;
 
-    @FindBy(className = "shopping_cart_link")
+    @FindBy(css = ".shopping_cart_link")
     private WebElement cartIcon;
 
     public ProductsPage(WebDriver driver) {
