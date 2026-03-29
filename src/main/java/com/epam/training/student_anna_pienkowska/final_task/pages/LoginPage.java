@@ -15,9 +15,6 @@ public class LoginPage extends BasePage{
     @FindBy(css = "#login-button")
     private WebElement loginButton;
 
-    @FindBy(xpath = "//h3[@data-test='error']")
-    private WebElement errorMessage;
-
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -42,9 +39,4 @@ public class LoginPage extends BasePage{
         setPassword(password);
         return clickLoginButton();
     }
-
-    public String getErrorMessage() {
-        return errorMessage.getText();
-    }
-
 }
