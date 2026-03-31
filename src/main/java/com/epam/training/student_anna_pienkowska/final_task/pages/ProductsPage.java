@@ -24,7 +24,9 @@ public class ProductsPage extends BasePage {
     }
 
     public void addProductToCart(String productName) {
+        //TODO avoid magic numbers and strings in your code. In this case, you can create a method that generates the button id based on the product name
         String formattedProductName = productName.replaceAll(" ", "-").toLowerCase();
+
         String buttonId = "add-to-cart-" + formattedProductName;
         WebElement addButton = driver.findElement(By.id(buttonId));
         click(addButton);

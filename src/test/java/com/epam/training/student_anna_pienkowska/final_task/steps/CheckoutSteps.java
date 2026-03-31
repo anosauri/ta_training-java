@@ -20,6 +20,7 @@ public class CheckoutSteps {
     @Given("User is on the Saucedemo login page")
     public void userIsOnTheSaucedemoLoginPage() {
         loginPage = new LoginPage(DriverManager.getDriver());
+        //TODO please avoid hardcoding urls in the code, you can use properties file to store them and read from there
         DriverManager.getDriver().get("https://www.saucedemo.com/");
     }
 

@@ -8,6 +8,7 @@ public class Hooks {
 
     @Before
     public void setup() {
+        //TODO What's the point of this method? It doesn't do anything.
     }
 
     @After

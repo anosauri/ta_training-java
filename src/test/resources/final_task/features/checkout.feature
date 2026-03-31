@@ -2,6 +2,11 @@ Feature: Checkout Process
 
   Background:
     Given User is on the Saucedemo login page
+    #TODO: Better to have user credentials in a separate file and read from there
+    # So your step could be : User logs in with standard credentials.
+    # see here we don't care about the actual credentials,
+    # we just want to use the standard ones, and if credentials change we don't need to
+    # change the step definition, we just need to change the data file
     When User logs in with username "standard_user" and password "secret_sauce"
     Then User is on the Saucedemo Products page
 

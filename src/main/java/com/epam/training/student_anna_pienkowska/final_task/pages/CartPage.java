@@ -23,17 +23,14 @@ public class CartPage extends BasePage {
     }
 
     public boolean cartPageIsDisplayed() {
+        //TODO: This waiting logic should be moved to BasePage
         wait.until(ExpectedConditions.visibilityOf(cartElement));
         return cartElement.isDisplayed();
     }
 
     public boolean productIsDisplayed(String productName) {
-        for (WebElement item : cartItemNames) {
-            if (item.getText().equals(productName)) {
-                return true;
-            }
-        }
-        return false;
+        return cartItemNames.stream()
+                .anyMatch(item -> item.getText().equals(productName));
     }
 
     public CheckoutInfoPage checkout() {

@@ -35,6 +35,7 @@ public class LoginPage extends BasePage{
     }
 
     public ProductsPage logInto(String username, String password) {
+        //TODO If you use chain of methods pattern, you can just call setUsername(username).setPassword(password).clickLoginButton();
         setUsername(username);
         setPassword(password);
         return clickLoginButton();

@@ -21,6 +21,9 @@ The Final Task contains tests for two checkout flows in the Saucedemo store, org
 The tests are configured to run in parallel (two scenarios execute at the same time). You can run them in Chrome or Edge. If no browser is specified in the command, Chrome is used by default.
 
 Run without specifying a browser:
+
+[//]: # (TODO: why we need to specify the test class name here? Can we run all tests without it?)
+
 ```bash
 mvn clean test -Dtest=TestRunner
 ```

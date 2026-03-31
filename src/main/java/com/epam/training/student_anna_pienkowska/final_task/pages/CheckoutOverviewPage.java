@@ -13,6 +13,7 @@ public class CheckoutOverviewPage extends BasePage {
     private WebElement itemTotal;
 
     @FindBy(css = ".inventory_item_price")
+    //TODO If itemPrice is a list of web elements, it should be named itemPrices to avoid confusion
     private List<WebElement> itemPrice;
 
     @FindBy(css = "#finish")
@@ -34,12 +35,12 @@ public class CheckoutOverviewPage extends BasePage {
 
     public double getItemPrice(WebElement priceElement) {
         String priceText = priceElement.getText();
+        //TODO Avaoid magic numbers, create constant for this regex
         String price = priceText.replaceAll("[^0-9.]", "");
         return Double.parseDouble(price);
     }
 
     public boolean checkSum() {
-
         double totalPrice = getItemPrice(itemTotal);
 
         double sum = 0;
