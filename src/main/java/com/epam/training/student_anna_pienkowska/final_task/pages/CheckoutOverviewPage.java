@@ -13,8 +13,7 @@ public class CheckoutOverviewPage extends BasePage {
     private WebElement itemTotal;
 
     @FindBy(css = ".inventory_item_price")
-    //TODO If itemPrice is a list of web elements, it should be named itemPrices to avoid confusion
-    private List<WebElement> itemPrice;
+    private List<WebElement> itemPrices;
 
     @FindBy(css = "#finish")
     private WebElement finishButton;
@@ -44,7 +43,7 @@ public class CheckoutOverviewPage extends BasePage {
         double totalPrice = getItemPrice(itemTotal);
 
         double sum = 0;
-        for (WebElement priceElement : itemPrice) {
+        for (WebElement priceElement : itemPrices) {
             double price = getItemPrice(priceElement);
             sum += price;
         }
