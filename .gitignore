@@ -44,3 +44,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+
+/src/test/resources/final_task/config.properties
