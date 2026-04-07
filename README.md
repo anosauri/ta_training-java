@@ -56,6 +56,16 @@ The Final Task contains tests for two checkout flows in the Saucedemo store, org
 **Test Resources (`src/test/resources/final_task/features/`)**
 * `checkout.feature` - contains test scenarios written in Gherkin
 
+## Configuration
+To run the tests you need to provide a local configuration file with user credentials. 
+
+How to set it up:
+* Navigate to src/test/resources/final_task/.
+* Copy the file config.properties.example and rename the copy to config.properties.
+* Open config.properties and fill in the missing values (username and password).
+
+The config.properties file is included in .gitignore to keep credentials secure.
+
 ## Execution instructions
 The tests are configured to run in parallel (two scenarios execute at the same time). You can run them in Chrome or Edge. If no browser is specified in the command, Chrome is used by default.
 
