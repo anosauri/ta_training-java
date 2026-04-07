@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+import com.epam.training.student_anna_pienkowska.final_task.utils.ConfigReader;
 
 public class CheckoutSteps {
 
@@ -20,8 +21,8 @@ public class CheckoutSteps {
     @Given("User is on the Saucedemo login page")
     public void userIsOnTheSaucedemoLoginPage() {
         loginPage = new LoginPage(DriverManager.getDriver());
-        //TODO please avoid hardcoding urls in the code, you can use properties file to store them and read from there
-        DriverManager.getDriver().get("https://www.saucedemo.com/");
+        String url = ConfigReader.getProperty("saucedemo.url");
+        DriverManager.getDriver().get(url);
     }
 
     @When("User logs in with username {string} and password {string}")
