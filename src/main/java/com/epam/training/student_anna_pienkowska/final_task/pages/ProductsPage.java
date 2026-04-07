@@ -14,20 +14,24 @@ public class ProductsPage extends BasePage {
     @FindBy(xpath = "//a[@class='shopping_cart_link']")
     private WebElement cartIcon;
 
+    private static final String ADD_TO_CART_PREFIX = "add-to-cart-";
+
     public ProductsPage(WebDriver driver) {
         super(driver);
     }
 
     public boolean productsPageIsDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(productsHeader));
-        return productsHeader.isDisplayed();
+        waitUntilDisplayed(productsHeader);
+        return true;
+    }
+
+    public String generateButtonId(String productName){
+        String formattedProductName = productName.replaceAll(" ", "-").toLowerCase();
+        return ADD_TO_CART_PREFIX + formattedProductName;
     }
 
     public void addProductToCart(String productName) {
-        //TODO avoid magic numbers and strings in your code. In this case, you can create a method that generates the button id based on the product name
-        String formattedProductName = productName.replaceAll(" ", "-").toLowerCase();
-
-        String buttonId = "add-to-cart-" + formattedProductName;
+        String buttonId = generateButtonId(productName);
         WebElement addButton = driver.findElement(By.id(buttonId));
         click(addButton);
     }

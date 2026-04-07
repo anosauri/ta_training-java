@@ -23,8 +23,8 @@ public class CheckoutOverviewPage extends BasePage {
     }
 
     public boolean checkoutOverviewPageIsDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(itemTotal));
-        return itemTotal.isDisplayed();
+        waitUntilDisplayed(itemTotal);
+        return true;
     }
 
     public CheckoutCompletePage clickFinishButton() {
@@ -34,8 +34,9 @@ public class CheckoutOverviewPage extends BasePage {
 
     public double getItemPrice(WebElement priceElement) {
         String priceText = priceElement.getText();
-        //TODO Avaoid magic numbers, create constant for this regex
-        String price = priceText.replaceAll("[^0-9.]", "");
+        final String priceRegex = "[^0-9.]";
+
+        String price = priceText.replaceAll(priceRegex, "");
         return Double.parseDouble(price);
     }
 
