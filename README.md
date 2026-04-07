@@ -22,18 +22,16 @@ The tests are configured to run in parallel (two scenarios execute at the same t
 
 Run without specifying a browser:
 
-[//]: # (TODO: why we need to specify the test class name here? Can we run all tests without it?)
-
 ```bash
-mvn clean test -Dtest=TestRunner
+mvn clean test
 ```
 Run in Chrome:
 ```bash
-mvn clean test -Dtest=TestRunner -Dbrowser=chrome
+mvn clean test -Dbrowser=chrome
 ```
 Run in Edge:
 ```bash
-mvn clean test -Dtest=TestRunner -Dbrowser=edge
+mvn clean test -Dbrowser=edge
 ```
 
 ## Report instructions

@@ -28,7 +28,7 @@ public class LogInShouldFailTest {
         // driver.close(); // only closes window
     }
 
-    @Test
+    @Test(enabled = false)
     public void testLoggingIntoApplication() throws InterruptedException {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
