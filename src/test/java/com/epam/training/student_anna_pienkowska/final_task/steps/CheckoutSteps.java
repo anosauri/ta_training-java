@@ -25,8 +25,10 @@ public class CheckoutSteps {
         DriverManager.getDriver().get(url);
     }
 
-    @When("User logs in with username {string} and password {string}")
-    public void userLogsInWithUsernameAndPassword(String username, String password) {
+    @When("User logs in with standard credentials")
+    public void userLogsInWithStandardCredentials() {
+        String username = ConfigReader.getProperty("user.username");
+        String password = ConfigReader.getProperty("user.password");
         productsPage = loginPage.logInto(username, password);
     }
 
