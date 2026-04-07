@@ -15,15 +15,13 @@ public class CheckoutCompletePage extends BasePage {
     }
 
     public boolean isCheckoutCompletePageDisplayed() {
-        //TODO I recommend you to create methods with different waiting conditions in BasePage
-        // and use them in your page classes
-        wait.until(ExpectedConditions.visibilityOf(completeMessage));
-        return completeMessage.isDisplayed();
+        waitUntilDisplayed(completeMessage);
+        return true;
     }
 
     public boolean isCheckoutCompleted(String message) {
-        String text = completeMessage.getText();
-        return text.equals(message);
+        waitUntilExpectedText(completeMessage, message);
+        return true;
     }
 
 }

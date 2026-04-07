@@ -24,8 +24,8 @@ public class CheckoutInfoPage extends BasePage {
     }
 
     public boolean checkoutInfoPageIsDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(firstNameField));
-        return firstNameField.isDisplayed();
+        waitUntilDisplayed(firstNameField);
+        return true;
     }
 
     public CheckoutInfoPage setFirstName(String firstName) {

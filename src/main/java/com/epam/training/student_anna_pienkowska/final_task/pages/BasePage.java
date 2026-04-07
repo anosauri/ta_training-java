@@ -27,4 +27,12 @@ public abstract class BasePage {
     protected void click(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
+
+    protected void waitUntilDisplayed(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected void waitUntilExpectedText(WebElement element, String text) {
+        wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+    }
 }

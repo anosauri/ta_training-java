@@ -23,9 +23,8 @@ public class CartPage extends BasePage {
     }
 
     public boolean cartPageIsDisplayed() {
-        //TODO: This waiting logic should be moved to BasePage
-        wait.until(ExpectedConditions.visibilityOf(cartElement));
-        return cartElement.isDisplayed();
+        waitUntilDisplayed(cartElement);
+        return true;
     }
 
     public boolean productIsDisplayed(String productName) {
